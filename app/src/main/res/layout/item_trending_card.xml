@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="145dp"
+    android:layout_height="185dp"
+    android:layout_marginEnd="6dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp">
+    <!-- Big Netflix Rank Number (Behind / Overlapping) -->
+    <TextView
+        android:id="@+id/tvRankNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="-6dp"
+        android:layout_marginBottom="-14dp"
+        android:fontFamily="sans-serif-black"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="8"
+        android:text="1"
+        android:textColor="#555555"
+        android:textSize="96sp" />
+    <!-- Movie Poster Card shifted to the right -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardPoster"
+        android:layout_width="105dp"
+        android:layout_height="170dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        app:cardBackgroundColor="@color/netflix_card"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="4dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/imgTrendingPoster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/bg_hero_gradient" />
+            <TextView
+                android:id="@+id/tvTrendingTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="2"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/netflix_black"
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="40dp">
+        <!-- Top Drag Handle & Close Container -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp">
+            <View
+                android:layout_width="40dp"
+                android:layout_height="4dp"
+                android:layout_centerHorizontal="true"
+                android:background="#444444" />
+            <ImageView
+                android:id="@+id/btnCloseDetail"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/bg_netflix_button_dark"
+                android:contentDescription="Close"
+                android:padding="6dp"
+                android:src="@drawable/ic_close" />
+        </RelativeLayout>
+        <!-- Movie Backdrop with Play Overlay -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp">
+            <ImageView
+                android:id="@+id/imgDetailBackdrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Movie Backdrop"
+                android:scaleType="centerCrop" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_hero_gradient" />
+            <!-- Centered Play Icon Overlay -->
+            <FrameLayout
+                android:id="@+id/btnOverlayPlay"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bg_cinema_play_circle"
+                android:clickable="true"
+                android:elevation="8dp"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="Play"
+                    android:src="@drawable/ic_play_arrow" />
+            </FrameLayout>
+            <!-- Quality Badge -->
+            <TextView
+                android:id="@+id/tvDetailQualityBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="16dp"
+                android:background="@drawable/bg_top10_badge"
+                android:fontFamily="sans-serif-black"
+                android:text="DIRECT STREAM"
+                android:textColor="@color/white"
+                android:textSize="11sp" />
+        </RelativeLayout>
+        <!-- Content details padding -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+            <!-- Movie Title -->
+            <TextView
+                android:id="@+id/tvDetailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Movie Title"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+            <!-- Metadata info row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tvDetailYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-bold"
+                    android:text="2026"
+                    android:textColor="#46D369"
+                    android:textSize="13sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="•"
+                    android:textColor="@color/text_muted" />
+                <TextView
+                    android:id="@+id/tvDetailDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="sans-serif-bold"
+                    android:text="2h 40min"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="•"
+                    android:textColor="@color/text_muted" />
+                <TextView
+                    android:id="@+id/tvDetailLanguage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_quality_badge"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Dual Audio"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="•"
+                    android:textColor="@color/text_muted" />
+                <TextView
+                    android:id="@+id/tvDetailGenres"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:fontFamily="sans-serif"
+                    android:maxLines="1"
+                    android:text="Action, Thriller"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+            <!-- Big Primary Direct Play / Stream Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnDetailPlay"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_cinema_button_red"
+                android:drawableStart="@drawable/ic_play_arrow"
+                android:drawablePadding="10dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="  DIRECT STREAM &amp; PLAY"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <!-- Sponsored Native Ad (Adsterra) -->
+            <FrameLayout
+                android:id="@+id/layoutDetailNativeAd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_card_movie"
+                android:padding="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_quality_badge"
+                        android:fontFamily="sans-serif-bold"
+                        android:paddingStart="6dp"
+                        android:paddingTop="2dp"
+                        android:paddingEnd="6dp"
+                        android:paddingBottom="2dp"
+                        android:text="SPONSORED"
+                        android:textColor="@color/netflix_gold"
+                        android:textSize="9sp" />
+
+                    <WebView
+                        android:id="@+id/webDetailNativeAd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="140dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@android:color/transparent" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <!-- Stream Quality Servers Section -->
+            <TextView
+                android:id="@+id/tvServersHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="sans-serif-bold"
+                android:text="FAST STREAMING &amp; DOWNLOAD SERVERS"
+                android:textColor="@color/netflix_gold"
+                android:textSize="12sp" />
+            <LinearLayout
+                android:id="@+id/layoutDetailQualityPills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+                <!-- Quality Buttons added dynamically -->
+            </LinearLayout>
+            <!-- Secondary Actions Row: My List & Share & Web Article -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/btnToggleMyList"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_netflix_button_dark"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/imgMyListIcon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="My List"
+                        android:src="@drawable/ic_add" />
+                    <TextView
+                        android:id="@+id/tvMyListText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="My List"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/btnDetailShare"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_netflix_button_dark"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="Share"
+                        android:src="@drawable/ic_share" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="Share"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/btnDetailWeb"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_netflix_button_dark"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="Website"
+                        android:src="@drawable/ic_open_in_new" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="Article"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- Starcast Details -->
+            <TextView
+                android:id="@+id/tvDetailCastHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Starcast"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+            <TextView
+                android:id="@+id/tvDetailStarcast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif"
+                android:text="Rajinikanth, ..."
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+            <!-- Storyline / Synopsis Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Storyline &amp; Overview"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+            <TextView
+                android:id="@+id/tvDetailSynopsis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="sans-serif"
+                android:lineSpacingExtra="4dp"
+                android:text="Synopsis description here."
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+            <!-- Screenshots Section -->
+            <TextView
+                android:id="@+id/tvScreenshotsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Movie Stills &amp; Screenshots"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvScreenshots"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:nestedScrollingEnabled="false"
+                android:orientation="horizontal" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

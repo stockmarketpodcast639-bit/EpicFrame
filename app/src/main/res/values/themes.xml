@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.EpicFrame" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/netflix_red</item>
+        <item name="colorPrimaryVariant">@color/netflix_red_dark</item>
+        <item name="colorSecondary">@color/netflix_gold</item>
+        <item name="android:windowBackground">@color/netflix_background</item>
+        <item name="android:statusBarColor">@color/netflix_background</item>
+        <item name="android:navigationBarColor">@color/netflix_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+    <style name="Theme.EpicFrame.Splash" parent="Theme.EpicFrame">
+        <item name="android:windowBackground">@color/netflix_background</item>
+    </style>
+    <style name="Theme.MyApplication" parent="Theme.EpicFrame" />
+</resources>

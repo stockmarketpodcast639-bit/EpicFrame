@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/netflix_black"
+    android:orientation="vertical">
+    <!-- Top Dark Toolbar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/netflix_black"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp">
+        <ImageView
+            android:id="@+id/btnWebBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/btnWebBack"
+            android:layout_toStartOf="@id/webActionButtons"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvWebTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-bold"
+                android:maxLines="1"
+                android:text="Epic Frame"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+            <TextView
+                android:id="@+id/tvWebSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif"
+                android:maxLines="1"
+                android:text="epicframe20.blogspot.com"
+                android:textColor="@color/text_muted"
+                android:textSize="11sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/webActionButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/btnWebRefresh"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Refresh"
+                android:padding="8dp"
+                android:src="@drawable/ic_refresh" />
+            <ImageView
+                android:id="@+id/btnWebOpenExternal"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Open in Browser"
+                android:padding="8dp"
+                android:src="@drawable/ic_open_in_new" />
+        </LinearLayout>
+    </RelativeLayout>
+    <!-- Horizontal Progress Bar -->
+    <ProgressBar
+        android:id="@+id/webProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:max="100"
+        android:progressTint="@color/netflix_red"
+        android:visibility="gone" />
+    <!-- Swipe Refresh + WebView -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/webSwipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <WebView
+            android:id="@+id/innerWebView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>

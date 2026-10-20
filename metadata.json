@@ -1,0 +1,6 @@
+{
+  "name": "Epic Frame",
+  "description": "Epic Frame Cinema & Stream App with ultra-fast player response, instant play/pause, 10s slide controls, and offline capabilities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
